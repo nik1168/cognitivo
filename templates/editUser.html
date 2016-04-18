@@ -1,0 +1,9 @@
+<ion-view view-title="Usuarios" ng-init="find()">
+  <ion-content>
+    <ion-list>
+      <ion-item ng-repeat="usuario in usuarios2" href="#/app/users/{{usuario._id}}">
+     {{usuario.firstName}}   
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
