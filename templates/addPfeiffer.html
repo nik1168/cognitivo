@@ -1,0 +1,57 @@
+<ion-view view-title="Anadir nuevo Test de Pfeiffer">
+  <ion-content>
+  	<form data-ng-submit="create()" novalidate>
+    <div class="list">
+  <label class="item item-input item-stacked-label">
+    <span class="input-label">Fecha de Hoy</span>
+    <input type="number" data-ng-model="date" id="date" placeholder="">
+  </label>
+  <label class="item item-input item-stacked-label">
+    <span class="input-label">Dia de la semana</span>
+    <input type="number" data-ng-model="weekDay" id="weekDay" placeholder="">
+  </label>
+  <label class="item item-input item-stacked-label">
+    <span class="input-label">Numero de telefono</span>
+    <input type="number" data-ng-model="tnumber" id="username" placeholder="">
+  </label>
+  <label class="item item-input item-stacked-label">
+    <span class="input-label">Direccion</span>
+    	<input type="number" data-ng-model="address" id="address" placeholder="">
+  </label>
+  <label class="item item-input item-stacked-label">
+    <span class="input-label">Edad</span>
+    	<input type="number" data-ng-model="age" id="age" placeholder="">
+  </label>
+   <label class="item item-input item-stacked-label">
+    <span class="input-label">Cumpleanos</span>
+      <input type="number" data-ng-model="birthdate" id="birthdate" placeholder="">
+  </label>
+   <label class="item item-input item-stacked-label">
+    <span class="input-label">Presidente actual</span>
+      <input type="number" data-ng-model="currentPresident" id="currentPresident" placeholder="">
+  </label>
+  <label class="item item-input item-stacked-label">
+    <span class="input-label">Ultimo presidente</span>
+      <input type="number" data-ng-model="lastPresident" id="lastPresident" placeholder="">
+  </label>
+  <label class="item item-input item-stacked-label">
+    <span class="input-label">Apellido de madre</span>
+      <input type="number" data-ng-model="motherLastName" id="motherLastName" placeholder="">
+  </label>
+  <label class="item item-input item-stacked-label">
+    <span class="input-label">Resta</span>
+      <input type="number" data-ng-model="substraction" id="substraction" placeholder="">
+  </label>
+
+    <label class="item item-input item-stacked-label">
+		 <input type="submit" value="Ingresar" class="button button-positive">
+     </label>
+
+    
+</div>
+</form>
+<label class="item item-input item-stacked-label" ng-model="resultado">
+    Resultado momentaneo: {{date+weekDay+tnumber+address+age+birthdate+currentPresident+lastPresident+motherLastName+substraction}}
+    </label>
+  </ion-content>
+</ion-view>

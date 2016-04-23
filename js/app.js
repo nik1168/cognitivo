@@ -98,12 +98,66 @@ angular.module('cognitivo', ['ionic','ngResource','starter.controllers','cogniti
       }
     }
   })
+  .state('app.addUser', {
+    url: '/addUser',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/addUser.html',
+        controller: 'UsersCtrl'
+      }
+    }
+  })
   .state('app.userdetail', {
       url: '/users/:usermobileID',
       views: {
         'menuContent': {
           templateUrl: 'templates/userdetail.html',
           controller: 'UsersCtrl'
+        }
+      }
+    })
+    .state('app.edituser', {
+      url: '/users/:usermobileID/edit',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/editUser.html',
+          controller: 'UsersCtrl'
+        }
+      }
+    })
+    .state('app.pfeiffers', {
+    url: '/pfeiffers',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/pfeiffers.html',
+        controller: 'PfeifferCtrl'
+      }
+    }
+  })
+  .state('app.addPfeiffer', {
+    url: '/addPfeiffer',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/addPfeiffer.html',
+        controller: 'PfeifferCtrl'
+      }
+    }
+  })
+  .state('app.pfeifferdetail', {
+      url: '/pfeiffers/:pfeifferID',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/pfeifferdetail.html',
+          controller: 'PfeifferCtrl'
+        }
+      }
+    })
+    .state('app.editpfeiffer', {
+      url: '/pfeiffers/:pfeifferID/edit',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/editPfeiffer.html',
+          controller: 'PfeifferCtrl'
         }
       }
     })

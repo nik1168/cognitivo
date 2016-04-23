@@ -5,7 +5,7 @@ angular.module('cognitivo.services',[])
 	 return $resource('http://cognitive-sisinfo.rhcloud.com/usersmobile/:usermobileID', {usermobileID:'@_id'}, {update:{method:'PUT'}});
 }])
 
-.factory('Peiffer',['$resource', function ($resource) {
+.factory('Pfeiffer',['$resource', function ($resource) {
 	 //Usar el service '$resource' para devolver un objeto '$resource' pill
 
 	 return $resource('http://cognitive-sisinfo.rhcloud.com/pfeiffer/:pfeifferID', {pfeifferID:'@_id'}, {update:{method:'PUT'}});

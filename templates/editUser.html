@@ -1,9 +1,32 @@
-<ion-view view-title="Usuarios" ng-init="find()">
+<ion-view view-title="Anadir nuevo Usuario" ng-init="findOne()">
   <ion-content>
-    <ion-list>
-      <ion-item ng-repeat="usuario in usuarios2" href="#/app/users/{{usuario._id}}">
-     {{usuario.firstName}}   
-      </ion-item>
-    </ion-list>
+  	<form data-ng-submit="update()" novalidate>
+    <div class="list">
+  <label class="item item-input item-stacked-label">
+    <span class="input-label">Nombre</span>
+    <input type="text" data-ng-model="user.firstName" id="firstName" placeholder="Juan">
+  </label>
+  <label class="item item-input item-stacked-label">
+    <span class="input-label">Apellido</span>
+    <input type="text" data-ng-model="user.lastName" id="lastName" placeholder="Perez">
+  </label>
+  <label class="item item-input item-stacked-label">
+    <span class="input-label">Username</span>
+    <input type="text" data-ng-model="user.username" id="username" placeholder="jperez123">
+  </label>
+  <label class="item item-input item-stacked-label">
+    <span class="input-label">Password</span>
+    	<input type="password" data-ng-model="password" id="password" placeholder="password">
+  </label>
+  <label class="item item-input item-stacked-label">
+    <span class="input-label">Email</span>
+    	<input type="email" data-ng-model="user.email" id="email" placeholder="jperez@gmail.com">
+  </label>
+
+    
+		 <input type="submit" value="Ingresar" class="button button-positive">
+    
+</div>
+</form>
   </ion-content>
 </ion-view>

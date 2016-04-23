@@ -5,6 +5,14 @@
   The Friends service returns an array of friend data
 -->
 <ion-view view-title="{{user.firstName}}" ng-init="findOne()">
+ <ion-nav-buttons side="right">
+      <a class="button" href="#/app/users/{{user._id}}/edit">
+        Editar
+      </a>
+      <a class="button" href="#" ng-click="delete()">
+        Eliminar
+      </a>
+    </ion-nav-buttons>
   <ion-content class="padding">
   <h1>{{user.firstName}}{{user.lastName}}</h1>
     <p>Aqui tendria que haber algo</p>
@@ -16,5 +24,7 @@
             {{user.created}}
 
     </p>
+    <a href="editUser">Editar</a>
+    <a href="#" ng-click="delete()">Eliminar</a>
   </ion-content>
 </ion-view>

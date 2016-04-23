@@ -52,7 +52,29 @@ angular.module('starter.controllers', [])
   ];
 })
 
-.controller('UsersCtrl', function($scope,Users,$stateParams) {
+.controller('UsersCtrl', function($scope,Users,$stateParams,$location) {
+  $scope.create = function () {
+      //Instanciamos el objeto con los parametros a anadir
+       var user = new Users({
+        firstName : this.firstName,
+        lastName : this.lastName,
+        username : this.username,
+        password : this.password,
+        email : this.email
+       });
+
+       //Utilizamos el metodo save de user para enviar la peticion POST apropiada
+       user.$save(function (response) {
+         // Si un usuario fue creado de modo correcto, redireccionar al usuario a la pagina del usuario
+         $location.path('/app/users/'+ response._id);
+        },
+        function (errorResponse) {
+           // En otro caso, presentar al usuario el mensaje de errorr
+           $scope.error = errorResponse.data.message;
+        });
+
+
+    };
   $scope.find = function () {
        $scope.usuarios2 = Users.query();
     };
@@ -61,6 +83,43 @@ angular.module('starter.controllers', [])
        $scope.user = Users.get({
         usermobileID : $stateParams.usermobileID
        });
+    };
+    //Creamos el metodo Update
+    $scope.update= function () {
+       //Usar el metodo '$update', de user para enviar una peticion PUT apropiada
+       $scope.user.$update(function () {
+         //si un usuario fue actualizado de modo correcto, redirigir el user a la apgina del article
+         $location.path('/app/users/'+$scope.user._id);
+
+       },
+       function (errorResponse) {
+         // En otro caso, se presenta el mensaje de error
+         $scope.error = errorResponse.data.message;
+       }
+       );
+    };
+
+    //Creamos el metodo delete
+    $scope.delete = function (user) {
+       //Si un usuario fue enviado al metodo, borrarlo (Es decir si se envia desde la lista de usuarios)
+       if(user){
+        //Usar el emtodo $remove de user para borrar el usuario
+        user.$remove(function () {
+           //Eliminar el usuario de la lista de articulos
+           // for (var i in $scope.users){
+           //   if($scope.users[i] == user){
+           //     $scope.user.splice(i,1);
+           //   }
+           // }
+           $location.path('/app/users');
+        });
+       }
+       else{
+        //En otro caso, usar el metodo '$remove' de user para borrar el usuario (Es decir si se elimina el usuario de la propia pagina)
+        $scope.user.$remove(function () {
+          $location.path('/app/users');
+        });
+       }
     };
   $scope.usuarios = [
     { nombre: 'Niklaus', id: 1 },
@@ -71,6 +130,97 @@ angular.module('starter.controllers', [])
     { nombre: 'Iris', id: 6 }
   ];
 })
+.controller('PfeifferCtrl', function($scope,Pfeiffer,$stateParams,$location) {
+  var d = new Date();
+    $scope.dates = d.toDateString();
+    var weekday = new Array(7);
+weekday[0]=  "Domingo";
+weekday[1] = "Lunes";
+weekday[2] = "Martes";
+weekday[3] = "Miercoles";
+weekday[4] = "Jueves";
+weekday[5] = "Viernes";
+weekday[6] = "Sabado";
+
+ $scope.n = weekday[d.getDay()];
+   //Exponer el service Authentication
+  // $scope.authentication = Authentication;
+
+   //creamos un nuevo controller para crear nuevos articulos
+   $scope.create = function () {
+     //Usar los campos form para crear un nuevo objeto $resource article
+     var pfeiffer = new Pfeiffer({
+      date : this.date,
+      weekDay : this.weekDay,
+      tnumber : this.tnumber,
+      address : this.address,
+      age : this.age,
+      birthdate : this.birthdate,
+      currentPresident : this.currentPresident,
+      lastPresident : this.lastPresident,
+      motherLastName : this.motherLastName,
+      substraction : this.substraction,
+      result : this.date + this.weekDay + this.tnumber+this.address + this.age + this.birthdate + this.currentPresident +this.lastPresident+ this.motherLastName + this.substraction 
+     });
+
+     //Usar el metodo '$save' de article para enviar una peticion POST apropiada
+     pfeiffer.$save(function (response) {
+       //Si un articulo fue creado de modo correcto, redireccionar al usuario a la pagina del articulo
+       $location.path('app/pfeiffers/'+response._id);
+     },function (errorResponse) {
+       //En otro caso, presentar al ususario el mensaje de error
+       $scope.error = errorResponse.data.message;
+     });
+   };
+   //Crear un nuevo metodo controller para recuperar una lista de articulos
+   $scope.find = function () {
+     //Usar el metodo 'query' de article para enviar una peticion GET apropiada
+     $scope.pfeiffers = Pfeiffer.query();
+   };
+
+   //Crear un nuevo metodo controller para recuperar un unico articulo
+   $scope.findOne = function () {
+     //Usar el metodo 'get' de article para enviar una peticion GET apropiada
+     $scope.pfeiffer = Pfeiffer.get({
+      pfeifferID : $stateParams.pfeifferID
+     });
+   };
+
+   //Crear un nuevo metodo controller para actualizar un unico article
+   $scope.update = function () {
+     //Usar el metodo '$update' de article para enviar una peticion PUT apropiada
+     $scope.pfeiffer.$update(function () {
+       //Si un article fue actualizado de modo correcto, redirigir el user a la pagina del article
+       $location.path('app/pfeiffers/' + $scope.pfeiffer._id);
+     },function (errorResponse) {
+       //En otro caso, presenta al user un mensaje de error
+       $scope.error = errorResponse.data.message;
+     });
+   };
+
+   //Crear un nuevo metodo controller para borrar un unico articulo
+   $scope.delete = function (pfeiffer) {
+
+     //Si un articulo fue enviado al metodo, borrarlo
+     if(pfeiffer){
+      //Usar el metodo '$remove' del articulo para borrar el articulo
+      pfeiffer.$remove(function () {
+         //Eliminar el articulo de la lista de articulos
+         // for(var i in $scope.articles){
+         //   if($scope.articles[i] == article){
+         //     $scope.articles.splice(i,1);
+         //   }
+         // }
+         $location.path('/app/pfeiffers');
+      });
+     }else{
+      // En otro caso, usar el metodo '$remove' de article para borrar el article
+      $scope.pfeiffer.$remove(function () {
+         $location.path('/app/pfeiffers');
+      });
+     }
+   };
+})
 .controller('FuerzaCtrl', function($scope){
     var client2 = new Messaging.Client("test.mosquitto.org", 8080, "myclientid_" + parseInt(Math.random() * 100, 10));
     var options = {
@@ -78,7 +228,7 @@ angular.module('starter.controllers', [])
         //Gets Called if the connection has sucessfully been established
         onSuccess: function () {
             //alert("Connected");
-             console.log("Conectado");
+             console.log("Conectado Fuerza");
              //$scope.estados.push({estado:"conectado"});
              client2.subscribe('/cognitive/casa/fuerza', {qos: 2});
         },
@@ -97,7 +247,7 @@ angular.module('starter.controllers', [])
   client2.onMessageArrived = function (message) {
       //Do something with the push message you received
       //angular.element('#messages2').append('<span>Topic: ' + message.destinationName + '  | ' + message.payloadString + '</span><br/>');
-      $('#messages2').append('|' + message.payloadString + '</span><br/>');
+      $('#messages2').append('' + message.payloadString + '</span><br/>');
      // console.log(message.timestamp);
     if(message.payloadString == 2){
       alert("ALERTA!!!!!");
@@ -115,7 +265,7 @@ angular.module('starter.controllers', [])
         //Gets Called if the connection has sucessfully been established
         onSuccess: function () {
             //alert("Connected");
-             console.log("Conectado");
+             console.log("Conectado Vital");
              //$scope.estados.push({estado:"conectado"});
              client2.subscribe('/cognitive/casa/vital', {qos: 2});
         },
@@ -134,7 +284,7 @@ angular.module('starter.controllers', [])
   client2.onMessageArrived = function (message) {
       //Do something with the push message you received
       //angular.element('#messages2').append('<span>Topic: ' + message.destinationName + '  | ' + message.payloadString + '</span><br/>');
-      $('#messages2').append('|' + message.payloadString + '</span><br/>');
+      $('#messages2').append('' + message.payloadString + '</span><br/>');
      // console.log(message.timestamp);
     if(message.payloadString == 2){
       alert("ALERTA!!!!!");
@@ -152,7 +302,7 @@ angular.module('starter.controllers', [])
         //Gets Called if the connection has sucessfully been established
         onSuccess: function () {
             //alert("Connected");
-             console.log("Conectado");
+             console.log("Conectado Principal");
              //$scope.estados.push({estado:"conectado"});
              client2.subscribe('/cognitive/casa/puerta', {qos: 2});
         },
@@ -171,7 +321,7 @@ angular.module('starter.controllers', [])
   client2.onMessageArrived = function (message) {
       //Do something with the push message you received
       //angular.element('#messages2').append('<span>Topic: ' + message.destinationName + '  | ' + message.payloadString + '</span><br/>');
-      $('#messages2').append('|' + message.payloadString + '</span><br/>');
+      $('#messages2').append('' + message.payloadString + '</span><br/>');
      // console.log(message.timestamp);
     if(message.payloadString == 2){
       alert("ALERTA!!!!!");
@@ -189,7 +339,7 @@ angular.module('starter.controllers', [])
         //Gets Called if the connection has sucessfully been established
         onSuccess: function () {
             //alert("Connected");
-             console.log("Conectado");
+             console.log("Conectado Pastillero");
              //$scope.estados.push({estado:"conectado"});
              client2.subscribe('/cognitive/casa/pastillero', {qos: 2});
         },
@@ -208,7 +358,7 @@ angular.module('starter.controllers', [])
   client2.onMessageArrived = function (message) {
       //Do something with the push message you received
       //angular.element('#messages2').append('<span>Topic: ' + message.destinationName + '  | ' + message.payloadString + '</span><br/>');
-      $('#messages2').append('|' + message.payloadString + '</span><br/>');
+      $('#messages2').append('' + message.payloadString + '</span><br/>');
      // console.log(message.timestamp);
     if(message.payloadString == 2){
       alert("ALERTA!!!!!");
@@ -226,7 +376,7 @@ angular.module('starter.controllers', [])
         //Gets Called if the connection has sucessfully been established
         onSuccess: function () {
             //alert("Connected");
-             console.log("Conectado");
+             console.log("Conectado Gas");
              //$scope.estados.push({estado:"conectado"});
              client2.subscribe('/cognitive/casa/gas', {qos: 2});
         },
@@ -245,7 +395,7 @@ angular.module('starter.controllers', [])
   client2.onMessageArrived = function (message) {
       //Do something with the push message you received
       //angular.element('#messages2').append('<span>Topic: ' + message.destinationName + '  | ' + message.payloadString + '</span><br/>');
-      $('#messages2').append('|' + message.payloadString + '</span><br/>');
+      $('#messages2').append('' + message.payloadString + '</span><br/>');
      // console.log(message.timestamp);
     if(message.payloadString == 2){
       alert("ALERTA!!!!!");

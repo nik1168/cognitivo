@@ -4,16 +4,29 @@
   The FriendsCtrl pulls data from the Friends service (service.js)
   The Friends service returns an array of friend data
 -->
-<ion-view view-title="{{user.firstName}}" ng-init="findOne()">
+<ion-view view-title="{{pfeiffer.created}}" ng-init="findOne()">
+<ion-nav-buttons side="right">
+      <a class="button" href="#/app/pfeiffers/{{pfeiffer._id}}/edit">
+        Editar
+      </a>
+      <a class="button" href="#" ng-click="delete()">
+        Eliminar
+      </a>
+    </ion-nav-buttons>
   <ion-content class="padding">
-  <h1>{{user.firstName}}{{user.lastName}}</h1>
-    <p>Aqui tendria que haber algo</p>
+  
+    
     <p>
-       {{user.firstName}}
-          {{user.lastName}}
-           {{user.username}}
-            {{user.email}}
-            {{user.created}}
+            {{pfeiffer.date}}
+            {{pfeiffer.weekDay}}
+            {{pfeiffer.tnumber}}
+            {{pfeiffer.tnumber}}
+            {{pfeiffer.age}}
+            {{pfeiffer.birthdate}}
+            {{pfeiffer.currentPresident}}
+            {{pfeiffer.lastPresident}}
+            {{pfeiffer.motherLastName}}
+            {{pfeiffer.result}}
 
     </p>
   </ion-content>
