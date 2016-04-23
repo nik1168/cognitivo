@@ -21,6 +21,7 @@
         <author href="http://nik.com" email="n@n.com">
         Niklaus Geisser
         </author>
+         <icon src="icon.png" />
          <gap:splash src="splash.png" />
          <gap:plugin name="org.apache.cordova.device" />
          <gap:plugin name="org.apache.cordova.device-motion"/>
