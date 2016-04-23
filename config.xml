@@ -26,5 +26,7 @@
          <gap:plugin name="org.apache.cordova.device" />
          <gap:plugin name="org.apache.cordova.device-motion"/>
          <gap:plugin name="org.apache.cordova.geolocation"/>
+         <plugin name="cordova-plugin-splashscreen" spec="2.1.0" source="pgb" />
+         <preference name="SplashScreen" value="screen"/>
         
 </widget>
