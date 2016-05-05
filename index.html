@@ -49,10 +49,10 @@ push.on('registration', function(data) {
 console.log(data.registrationId);
 $("#gcm_id").html(data.registrationId);
 alert(data.registrationId);
-     var messageace = new Messaging.Message(data.registrationId);
-     messageace.destinationName = 'sat/gcm';
-     messageace.qos = 2;
-     client.send(messageace);
+     // var messageace = new Messaging.Message(data.registrationId);
+     // messageace.destinationName = 'sat/gcm';
+     // messageace.qos = 2;
+     // client.send(messageace);
 });
 
 push.on('notification', function(data) {
