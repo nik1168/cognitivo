@@ -28,35 +28,7 @@
     <script type="text/javascript">
     document.addEventListener("deviceready", onDeviceReady, false);
       function onDeviceReady(){
-  
-        var push = PushNotification.init({ "android": {"senderID": "197882455491"},
-"ios": {"alert": "true", "badge": "true", "sound": "true"}, "windows": {} } );
-
-push.on('registration', function(data) {
-console.log(data.registrationId);
-//$("#gcm_id").html(data.registrationId);
-alert(data.registrationId);
-//hjhjh
-     // var messageace = new Messaging.Message(data.registrationId);
-     // messageace.destinationName = 'sat/gcm';
-     // messageace.qos = 2;
-     // client.send(messageace);
-
-});
-push.on('notification', function(data) {
-console.log(data.message);
-alert(data.title+" Message: " +data.message);
-// data.title,
-// data.count,
-// data.sound,
-// data.image,
-// data.additionalData
-});
-
-push.on('error', function(e) {
-console.log(e.message);
-alert(error);
-});
+        alert("Devicr ready");
         
 }
     </script>
