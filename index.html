@@ -28,6 +28,27 @@
     <script type="text/javascript">
     document.addEventListener("deviceready", onDeviceReady, false);
       function onDeviceReady(){
+        var push = PushNotification.init({ "android": {"senderID": "197882455491"},
+"ios": {"alert": "true", "badge": "true", "sound": "true"}, "windows": {} } );
+
+push.on('registration', function(data) {
+console.log(data.registrationId);
+$("#gcm_id").html(data.registrationId);
+});
+
+push.on('notification', function(data) {
+console.log(data.message);
+alert(data.title+" Message: " +data.message);
+// data.title,
+// data.count,
+// data.sound,
+// data.image,
+// data.additionalData
+});
+
+push.on('error', function(e) {
+console.log(e.message);
+});
         
         }
     </script>
@@ -37,6 +58,7 @@
    
     <ion-nav-view></ion-nav-view>
     <div class="tabs tabs-icon-top tabs-positive">
+      <p id="gcm_id"></p>
   <a class="tab-item" href="#/app/" >
     <i class="icon ion-home"></i>
     Home
