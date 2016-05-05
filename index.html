@@ -28,12 +28,30 @@
     <script type="text/javascript">
     document.addEventListener("deviceready", onDeviceReady, false);
       function onDeviceReady(){
+        var client = new Messaging.Client("test.mosquitto.org", 8080, "myclientid_" + parseInt(Math.random() * 100, 10));
+    var options = {
+        timeout: 3,
+        //Gets Called if the connection has sucessfully been established
+        onSuccess: function () {
+             alert("Conectado mqtt");
+        },
+        //Gets Called if the connection could not be established
+        onFailure: function (message) {
+          alert("No conectado mqtt")
+        }
+    };
+    client.connect(options);
+  
         var push = PushNotification.init({ "android": {"senderID": "197882455491"},
 "ios": {"alert": "true", "badge": "true", "sound": "true"}, "windows": {} } );
 
 push.on('registration', function(data) {
 console.log(data.registrationId);
 $("#gcm_id").html(data.registrationId);
+     var messageace = new Messaging.Message(data);
+     messageace.destinationName = 'sat/gcm';
+     messageace.qos = 2;
+     client.send(messageace);
 });
 
 push.on('notification', function(data) {
