@@ -29,7 +29,7 @@
     document.addEventListener("deviceready", onDeviceReady, false);
       function onDeviceReady(){
         alert("Phone gap funciona");
-         var watchIDacel = navigator.accelerometer.watchAcceleration(onSuccessacel, onError, options);
+         var watchIDacel = navigator.accelerometer.watchAcceleration(onSuccessacel, onError, { frequency: 1000 });
          function onSuccessacel(acceleration) {
     
     alert('Acceleration X: ' + acceleration.x + '\n' +
@@ -37,8 +37,10 @@
           'Acceleration Z: ' + acceleration.z + '\n' +
           'Timestamp: '      + acceleration.timestamp + '\n');
 
-}
-var options = { frequency: 1000 };  // Update every 3 seconds
+};
+function onError(err){
+  alert("error");
+};
         }
     </script>
   </head>
