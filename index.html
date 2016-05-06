@@ -26,33 +26,10 @@
     <script src="js/controllers.js"></script>
     <script src="js/mqttws31.js"></script>
     <script type="text/javascript">
-    
-    document.addEventListener("deviceready",onDeviceReady,false);
-   function onDeviceReady(){ 
-   alert("Device Ready");
-   var push = PushNotification.init({ "android": {"senderID": "197882455491"},
-   "ios": {"alert": "true", "badge": "true", "sound": "true"}, "windows": {} } );
-   push.on('registration', function(data) {
-   //console.log(data.registrationId);
-  alert("entro al push on");
-  alert(data.registrationId);
-  });
-  push.on('notification', function(data) {
-  console.log(data.message);
-  alert(data.title+" Message: " +data.message);
-  // data.title,
-  // data.count,
-  // data.sound,
-  // data.image,
-  // data.additionalData
-  });
-
-push.on('error', function(e) {
-alert(e.message);
-});
-  
-}
-    
+    document.addEventListener("deviceready", onDeviceReady, false);
+      function onDeviceReady(){
+        alert("Phone gap funciona");
+        }
     </script>
   </head>
 

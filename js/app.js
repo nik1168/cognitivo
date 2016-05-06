@@ -21,6 +21,7 @@ angular.module('cognitivo', ['ionic','ngResource','starter.controllers','cogniti
     }
   });
 })
+
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
