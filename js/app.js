@@ -13,26 +13,6 @@ angular.module('cognitivo', ['ionic','ngResource','starter.controllers','cogniti
     if (window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       cordova.plugins.Keyboard.disableScroll(true);
-       var push = PushNotification.init({ "android": {"senderID": "197882455491"},
-   "ios": {"alert": "true", "badge": "true", "sound": "true"}, "windows": {} } );
-   push.on('registration', function(data) {
-   //console.log(data.registrationId);
-  alert("entro al push on");
-  alert(data.registrationId);
-  });
-  push.on('notification', function(data) {
-  console.log(data.message);
-  alert(data.title+" Message: " +data.message);
-  // data.title,
-  // data.count,
-  // data.sound,
-  // data.image,
-  // data.additionalData
-  });
-
-push.on('error', function(e) {
-alert(e.message);
-});
 
     }
     if (window.StatusBar) {
@@ -41,45 +21,6 @@ alert(e.message);
     }
   });
 })
-.controller('HolaCtrl',  function($scope){
-   var client2 = new Messaging.Client("test.mosquitto.org", 8080, "myclientid_" + parseInt(Math.random() * 100, 10));
-    var options = {
-        timeout: 3,
-        //Gets Called if the connection has sucessfully been established
-        onSuccess: function () {
-            //alert("Connected");
-             console.log("Conectado Gas");
-             //$scope.estados.push({estado:"conectado"});
-             client2.subscribe('/cognitive/casa/gas', {qos: 2});
-        },
-        //Gets Called if the connection could not be established
-        onFailure: function (message) {
-           //$scope.estados = "error de conexion";
-           // alert("Connection failed: " + message.errorMessage);
-        }
-    };
-    $scope.connect=function(){
-      client2.connect(options);
-    };
-  //  client2.connect(options);
-//$scope.connect();
-  //Gets called whenever you receive a message for your subscriptions
-  client2.onMessageArrived = function (message) {
-      //Do something with the push message you received
-      //angular.element('#messages2').append('<span>Topic: ' + message.destinationName + '  | ' + message.payloadString + '</span><br/>');
-     // $('#messages2').append('' + message.payloadString + '</span><br/>');
-     // console.log(message.timestamp);
-    // if(message.payloadString == 2){
-    //   alert("ALERTA!!!!!");
-    // }
-     // $scope.mensajes.push({dato : message.payloadString});
-    //  $scope.anadir();
-  };
-  $scope.publicar=function (id) {
-     
-  }
-}])
-
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
