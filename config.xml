@@ -29,7 +29,7 @@
          <gap:plugin name="org.apache.cordova.device" />
          <gap:plugin name="org.apache.cordova.device-motion"/>
          <gap:plugin name="org.apache.cordova.geolocation"/>
-         
+         <plugin name="com.phonegap.plugins.pushplugin" spec="2.4.0" source="pgb" />
 
         
 </widget>
