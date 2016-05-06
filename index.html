@@ -29,40 +29,40 @@
     document.addEventListener("deviceready", onDeviceReady, false);
       function onDeviceReady(){
         alert("Phone gap funciona");
-//          var watchIDacel = navigator.accelerometer.watchAcceleration(onSuccessacel, onError, { frequency: 1000 });
-//          function onSuccessacel(acceleration) {
+         var watchIDacel = navigator.accelerometer.watchAcceleration(onSuccessacel, onError, { frequency: 1000 });
+         function onSuccessacel(acceleration) {
     
-//     alert('Acceleration X: ' + acceleration.x + '\n' +
-//           'Acceleration Y: ' + acceleration.y + '\n' +
-//           'Acceleration Z: ' + acceleration.z + '\n' +
-//           'Timestamp: '      + acceleration.timestamp + '\n');
+    alert('Acceleration X: ' + acceleration.x + '\n' +
+          'Acceleration Y: ' + acceleration.y + '\n' +
+          'Acceleration Z: ' + acceleration.z + '\n' +
+          'Timestamp: '      + acceleration.timestamp + '\n');
 
-// };
-// function onError(err){
-//   alert("error");
-// };
+};
+function onError(err){
+  alert("error");
+};
 
-var push = PushNotification.init({ "android": {"senderID": "197882455491"},
-"ios": {"alert": "true", "badge": "true", "sound": "true"}, "windows": {} } );
+// var push = PushNotification.init({ "android": {"senderID": "197882455491"},
+// "ios": {"alert": "true", "badge": "true", "sound": "true"}, "windows": {} } );
 
-push.on('registration', function(data) {
-console.log(data.registrationId);
-alert(data.registrationId);
-});
+// push.on('registration', function(data) {
+// console.log(data.registrationId);
+// alert(data.registrationId);
+// });
 
-push.on('notification', function(data) {
-console.log(data.message);
-alert(data.title+" Message: " +data.message);
-// data.title,
-// data.count,
-// data.sound,
-// data.image,
-// data.additionalData
-});
+// push.on('notification', function(data) {
+// console.log(data.message);
+// alert(data.title+" Message: " +data.message);
+// // data.title,
+// // data.count,
+// // data.sound,
+// // data.image,
+// // data.additionalData
+// });
 
-push.on('error', function(e) {
-alert(e.message);
-});
+// push.on('error', function(e) {
+// alert(e.message);
+// });
 }
     </script>
   </head>
