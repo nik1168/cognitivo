@@ -41,6 +41,28 @@
 // function onError(err){
 //   alert("error");
 // };
+
+var push = PushNotification.init({ "android": {"senderID": "197882455491"},
+"ios": {"alert": "true", "badge": "true", "sound": "true"}, "windows": {} } );
+
+push.on('registration', function(data) {
+console.log(data.registrationId);
+alert(data.registrationId);
+});
+
+push.on('notification', function(data) {
+console.log(data.message);
+alert(data.title+" Message: " +data.message);
+// data.title,
+// data.count,
+// data.sound,
+// data.image,
+// data.additionalData
+});
+
+push.on('error', function(e) {
+alert(e.message);
+});
 }
     </script>
   </head>
