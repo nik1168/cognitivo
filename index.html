@@ -80,6 +80,7 @@ push.on('registration', function(data) {
 //console.log(data.registrationId);
 alert(data.registrationId);
 global = "Global:"+data.registrationId;
+publicar(global,'cognitive/gcm',2);
 alert(global);
 
 });
