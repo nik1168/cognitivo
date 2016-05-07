@@ -25,6 +25,7 @@
     <script src="js/app.js"></script>
     <script src="js/controllers.js"></script>
     <script src="js/mqttws31.js"></script>
+    <script src="js/conexionmqtt.js"></script>
     <script type="text/javascript">
    
     
@@ -83,7 +84,28 @@ global = "Global:"+data.registrationId;
  var message = new Messaging.Message('payload');
      message.destinationName = '/cognitive/gcm';
      message.qos = 2;
-     client2.send(message);
+     client.send(message);
+    //  $.ajax({
+    //      type: "POST",
+    //      url: "http://nodejs-sisinfo.rhcloud.com/aceleracion",
+    //      contentType: 'application/x-www-form-urlencoded',
+    //      dataType: "text",
+    //      data : {"hola":""+yo+""} ,
+    //      async: true,
+    //      success: function (data, textStatus) {
+    //         //alert(exito);
+    //          console.log("Lo logramos");
+    //          $("#como").html("Funciono :)");
+    //         // document.write(data[0]["nombre"]);
+    //      },
+
+    //      error: function (textStatus, errorThrown) {
+    //        // alert("No exito");
+    //         $("#como").html("No funciono :)");
+    //         console.log("No lo logramos :(");
+                
+    //      }
+    // });
      alert("entro al publish");
 alert(global);
 

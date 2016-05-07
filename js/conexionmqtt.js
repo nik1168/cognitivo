@@ -11,7 +11,7 @@
      },
      //Gets Called if the connection could not be established
      onFailure: function (message) {
-        $('#estado').text('Error de conexion:');
+      //  $('#estado').text('Error de conexion:');
         // alert("Connection failed: " + message.errorMessage);
      }
  };
