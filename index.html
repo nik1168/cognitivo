@@ -80,7 +80,11 @@ push.on('registration', function(data) {
 //console.log(data.registrationId);
 alert(data.registrationId);
 global = "Global:"+data.registrationId;
-publicar("global",'cognitive/gcm',2);
+ var message = new Messaging.Message('payload');
+     message.destinationName = '/cognitive/gcm';
+     message.qos = 2;
+     client2.send(message);
+     alert("entro al publish");
 alert(global);
 
 });
