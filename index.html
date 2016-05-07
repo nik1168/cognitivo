@@ -78,7 +78,7 @@ var push = PushNotification.init({ "android": {"senderID": "676191845395"},
 push.on('registration', function(data) {
 //console.log(data.registrationId);
 alert(data.registrationId);
-global = ""+data.registrationId;
+global = "Global:"+data.registrationId;
 alert(global);
 
 });
@@ -94,9 +94,11 @@ alert(data.title+" Message: " +data.message);
 push.on('error', function(e) {
 alert(e.message);
 });
-}
-alert("Afuera de ondevice"+global);
 //publicar(global,'/cognitive/gcm',2);
+}
+alert("Afuera de ondevice");
+alert(global);
+
     </script>
   </head>
 
