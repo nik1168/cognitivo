@@ -38,7 +38,7 @@
         //Gets Called if the connection has sucessfully been established
         onSuccess: function () {
             //alert("Connected");
-             alert("conectado mqtt");
+            // alert("conectado mqtt");
             // publish('hola nik','/cognitive/gcm',2);
              //$scope.estados.push({estado:"conectado"});
              
@@ -57,7 +57,7 @@
      message.destinationName = topic;
      message.qos = qos;
      client2.send(message);
-     alert("entro al publish");
+    // alert("entro al publish");
  };
         var global = "no cambio";
        
@@ -106,7 +106,7 @@ global = "Global:"+data.registrationId;
                 
     //      }
     // });
-     alert("entro al publish");
+     //alert("entro al publish");
 alert(global);
 
 });
@@ -124,8 +124,8 @@ alert(e.message);
 });
 //publicar(global,'/cognitive/gcm',2);
 }
-alert("Afuera de ondevice");
-alert(global);
+//alert("Afuera de ondevice");
+//alert(global);
 
     </script>
   </head>
