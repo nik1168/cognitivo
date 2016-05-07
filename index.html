@@ -34,7 +34,7 @@
         onSuccess: function () {
             //alert("Connected");
              alert("conectado mqtt");
-             publish('hola nik','/cognitive/gcm',2);
+            // publish('hola nik','/cognitive/gcm',2);
              //$scope.estados.push({estado:"conectado"});
              
         },
@@ -76,13 +76,7 @@ var push = PushNotification.init({ "android": {"senderID": "676191845395"},
 push.on('registration', function(data) {
 //console.log(data.registrationId);
 alert(data.registrationId);
-var message = new Messaging.Message(data.registrationId);
-     message.destinationName = "/cognitive/gcm";
-     message.qos = 2;
-     
-     alert("entro");
-});
-client2.send(message);
+publish(''+data.registrationId+'','/cognitive/gcm',2);
 push.on('notification', function(data) {
 console.log(data.message);
 alert(data.title+" Message: " +data.message);
