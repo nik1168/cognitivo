@@ -46,7 +46,11 @@
     };
     
       client2.connect(options);
-       function publish (payload, topic, qos) {
+      
+
+    document.addEventListener("deviceready", onDeviceReady, false);
+      function onDeviceReady(){
+         function publish (payload, topic, qos) {
      //Send your message (also possible to serialize it as JSON or protobuf or just use a string, no limitations)
      var message = new Messaging.Message(payload);
      message.destinationName = topic;
@@ -54,9 +58,6 @@
      client2.send(message);
      alert("entro al publish");
  };
-
-    document.addEventListener("deviceready", onDeviceReady, false);
-      function onDeviceReady(){
         //alert("Phone gap funciona");
 //          var watchIDacel = navigator.accelerometer.watchAcceleration(onSuccessacel, onError, { frequency: 1000 });
 //          function onSuccessacel(acceleration) {
