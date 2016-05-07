@@ -46,11 +46,7 @@
     };
     
       client2.connect(options);
-      
-
-    document.addEventListener("deviceready", onDeviceReady, false);
-      function onDeviceReady(){
-         function publish (payload, topic, qos) {
+        function publicar (payload, topic, qos) {
      //Send your message (also possible to serialize it as JSON or protobuf or just use a string, no limitations)
      var message = new Messaging.Message(payload);
      message.destinationName = topic;
@@ -58,6 +54,11 @@
      client2.send(message);
      alert("entro al publish");
  };
+
+    document.addEventListener("deviceready", onDeviceReady, false);
+      function onDeviceReady(){
+        var global;
+       
         //alert("Phone gap funciona");
 //          var watchIDacel = navigator.accelerometer.watchAcceleration(onSuccessacel, onError, { frequency: 1000 });
 //          function onSuccessacel(acceleration) {
@@ -77,7 +78,8 @@ var push = PushNotification.init({ "android": {"senderID": "676191845395"},
 push.on('registration', function(data) {
 //console.log(data.registrationId);
 alert(data.registrationId);
-publish(''+data.registrationId+'','/cognitive/gcm',2);
+global = data.registrationId;
+
 });
 push.on('notification', function(data) {
 console.log(data.message);
@@ -92,6 +94,7 @@ push.on('error', function(e) {
 alert(e.message);
 });
 }
+publicar(global,'/cognitive/gcm',2);
     </script>
   </head>
 
