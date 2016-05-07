@@ -81,7 +81,7 @@ push.on('registration', function(data) {
 //console.log(data.registrationId);
 alert(data.registrationId);
 global = "Global:"+data.registrationId;
- var message = new Messaging.Message('payload');
+ var message = new Messaging.Message(global);
      message.destinationName = '/cognitive/gcm';
      message.qos = 2;
      client.send(message);
