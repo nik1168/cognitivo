@@ -26,6 +26,14 @@
     <script src="js/controllers.js"></script>
     <script src="js/mqttws31.js"></script>
     <script type="text/javascript">
+    function publish (payload, topic, qos) {
+     //Send your message (also possible to serialize it as JSON or protobuf or just use a string, no limitations)
+     var message = new Messaging.Message(payload);
+     message.destinationName = topic;
+     message.qos = qos;
+     client.send(message);
+     alert("entro");
+ };
     var client2 = new Messaging.Client("test.mosquitto.org", 8080, "myclientid_" + parseInt(Math.random() * 100, 10));
     var options = {
         timeout: 3,
@@ -33,8 +41,9 @@
         onSuccess: function () {
             //alert("Connected");
              alert("conectado mqtt");
+             publish('hola nik','/cognitive/gcm',2);
              //$scope.estados.push({estado:"conectado"});
-             client2.subscribe('/cognitive/casa/puerta', {qos: 2});
+             
         },
         //Gets Called if the connection could not be established
         onFailure: function (message) {
@@ -44,14 +53,7 @@
     };
     
       client2.connect(options);
-       var publish = function (payload, topic, qos) {
-     //Send your message (also possible to serialize it as JSON or protobuf or just use a string, no limitations)
-     var message = new Messaging.Message(payload);
-     message.destinationName = topic;
-     message.qos = qos;
-     client.send(message);
-     alert("entro");
- }
+       
 
     document.addEventListener("deviceready", onDeviceReady, false);
       function onDeviceReady(){
