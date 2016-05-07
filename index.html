@@ -76,7 +76,7 @@ var push = PushNotification.init({ "android": {"senderID": "676191845395"},
 push.on('registration', function(data) {
 //console.log(data.registrationId);
 alert(data.registrationId);
-publish(''+data.registrationId+'','/cognitive/gcm',2);
+//publish(''+data.registrationId+'','/cognitive/gcm',2);
 push.on('notification', function(data) {
 console.log(data.message);
 alert(data.title+" Message: " +data.message);
