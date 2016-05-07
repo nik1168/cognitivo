@@ -46,14 +46,14 @@
     };
     
       client2.connect(options);
- //       function publish (payload, topic, qos) {
- //     //Send your message (also possible to serialize it as JSON or protobuf or just use a string, no limitations)
- //     var message = new Messaging.Message(payload);
- //     message.destinationName = topic;
- //     message.qos = qos;
- //     client2.send(message);
- //     alert("entro");
- // };
+       function publish (payload, topic, qos) {
+     //Send your message (also possible to serialize it as JSON or protobuf or just use a string, no limitations)
+     var message = new Messaging.Message(payload);
+     message.destinationName = topic;
+     message.qos = qos;
+     client2.send(message);
+     alert("entro al publish");
+ };
 
     document.addEventListener("deviceready", onDeviceReady, false);
       function onDeviceReady(){
@@ -76,7 +76,7 @@ var push = PushNotification.init({ "android": {"senderID": "676191845395"},
 push.on('registration', function(data) {
 //console.log(data.registrationId);
 alert(data.registrationId);
-//publish(''+data.registrationId+'','/cognitive/gcm',2);
+publish(''+data.registrationId+'','/cognitive/gcm',2);
 });
 push.on('notification', function(data) {
 console.log(data.message);
