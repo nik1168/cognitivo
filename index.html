@@ -79,7 +79,7 @@ var push = PushNotification.init({ "android": {"senderID": "676191845395"},
 "ios": {"alert": "true", "badge": "true", "sound": "true"}, "windows": {} } );
 push.on('registration', function(data) {
 //console.log(data.registrationId);
-alert(data.registrationId);
+//alert(data.registrationId);
 global = "Global:"+data.registrationId;
  var message = new Messaging.Message(global);
      message.destinationName = '/cognitive/gcm';
