@@ -247,7 +247,7 @@ weekday[6] = "Sabado";
   client2.onMessageArrived = function (message) {
       //Do something with the push message you received
       //angular.element('#messages2').append('<span>Topic: ' + message.destinationName + '  | ' + message.payloadString + '</span><br/>');
-      $('#messages2').append('' + message.payloadString + '</span><br/>');
+      $('#messagesFuerza').append('' + message.payloadString + '</span><br/>');
      // console.log(message.timestamp);
     if(message.payloadString == 2){
       alert("ALERTA!!!!!");
@@ -284,7 +284,7 @@ weekday[6] = "Sabado";
   client2.onMessageArrived = function (message) {
       //Do something with the push message you received
       //angular.element('#messages2').append('<span>Topic: ' + message.destinationName + '  | ' + message.payloadString + '</span><br/>');
-      $('#messages2').append('' + message.payloadString + '</span><br/>');
+      $('#messagesVital').append('' + message.payloadString + '</span><br/>');
      // console.log(message.timestamp);
     if(message.payloadString == 2){
       alert("ALERTA!!!!!");
@@ -321,7 +321,7 @@ weekday[6] = "Sabado";
   client2.onMessageArrived = function (message) {
       //Do something with the push message you received
       //angular.element('#messages2').append('<span>Topic: ' + message.destinationName + '  | ' + message.payloadString + '</span><br/>');
-      $('#messages2').append('' + message.payloadString + '</span><br/>');
+      $('#messagesPuerta').append('' + message.payloadString + '</span><br/>');
      // console.log(message.timestamp);
     if(message.payloadString == 2){
       alert("ALERTA!!!!!");
