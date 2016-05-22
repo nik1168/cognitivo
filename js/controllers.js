@@ -51,8 +51,21 @@ angular.module('starter.controllers', [])
     { title: 'Cowbell', id: 6 }
   ];
 })
-.controller('MapCtrl', function($scope) {
-   var latLng = new google.maps.LatLng(-16.521874, -68.082025);
+.controller('MapCtrl', function($scope,$http) {
+  var latLng2;
+  $http({
+      url: 'http://cognitive-sisinfo.rhcloud.com/maps',
+      method: "GET"
+  })
+  .then(function(response) {
+    console.log(response);
+        var tu = response.data;
+        console.log(tu);
+        var d = tu.toString();
+        var separa = d.split(",");
+        console.log(separa[1]);
+        console.log(separa[2]);
+          var latLng = new google.maps.LatLng(separa[1], separa[2]);
  
     var mapOptions = {
       center: latLng,
@@ -78,6 +91,11 @@ angular.module('starter.controllers', [])
   });      
  
 });
+  },
+  function(response) { // optional
+          console.log("fallo:"+response);
+  });
+ 
 })
 
 .controller('UsersCtrl', function($scope,Users,$stateParams,$location) {
