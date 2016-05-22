@@ -51,6 +51,34 @@ angular.module('starter.controllers', [])
     { title: 'Cowbell', id: 6 }
   ];
 })
+.controller('MapCtrl', function($scope) {
+   var latLng = new google.maps.LatLng(-16.521874, -68.082025);
+ 
+    var mapOptions = {
+      center: latLng,
+      zoom: 16,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+ 
+    $scope.map = new google.maps.Map(document.getElementById("map"), mapOptions);
+    google.maps.event.addListenerOnce($scope.map, 'idle', function(){
+ 
+   var marker = new google.maps.Marker({
+      map: $scope.map,
+      animation: google.maps.Animation.DROP,
+      position: latLng
+  });      
+ 
+  var infoWindow = new google.maps.InfoWindow({
+      content: "Aqui estoy"
+  });
+ 
+  google.maps.event.addListener(marker, 'click', function () {
+      infoWindow.open($scope.map, marker);
+  });      
+ 
+});
+})
 
 .controller('UsersCtrl', function($scope,Users,$stateParams,$location) {
   $scope.create = function () {
