@@ -176,6 +176,42 @@ angular.module('starter.controllers', [])
     { nombre: 'Iris', id: 6 }
   ];
 })
+.controller('ReportCtrl', function($scope,Report,$stateParams,$location) {
+ 
+  $scope.find = function () {
+       $scope.reports = Report.query();
+    };
+    $scope.findOne = function () {
+       // Usar el metodo 'get' de user para enviar una peticion GET apropiada
+       $scope.report = Report.get({
+        reportID : $stateParams.reportID
+       });
+    };
+
+    //Creamos el metodo delete
+    $scope.delete = function (report) {
+       //Si un usuario fue enviado al metodo, borrarlo (Es decir si se envia desde la lista de usuarios)
+       if(report){
+        //Usar el emtodo $remove de user para borrar el usuario
+        user.$remove(function () {
+           //Eliminar el usuario de la lista de articulos
+           // for (var i in $scope.users){
+           //   if($scope.users[i] == user){
+           //     $scope.user.splice(i,1);
+           //   }
+           // }
+           $location.path('/app/reports');
+        });
+       }
+       else{
+        //En otro caso, usar el metodo '$remove' de user para borrar el usuario (Es decir si se elimina el usuario de la propia pagina)
+        $scope.report.$remove(function () {
+          $location.path('/app/report');
+        });
+       }
+    };
+  
+})
 .controller('PfeifferCtrl', function($scope,Pfeiffer,$stateParams,$location) {
   var d = new Date();
     $scope.dates = d.toDateString();

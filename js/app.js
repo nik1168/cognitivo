@@ -161,6 +161,24 @@ angular.module('cognitivo', ['ionic','ngResource','starter.controllers','cogniti
         }
       }
     })
+    .state('app.reports', {
+    url: '/reports',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/reports.html',
+        controller: 'ReportCtrl'
+      }
+    }
+  })
+    .state('app.reportdetail', {
+      url: '/reports/:reportID',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/reportdetail.html',
+          controller: 'ReportCtrl'
+        }
+      }
+    })
      .state('app.maps', {
       url: '/maps',
       views: {

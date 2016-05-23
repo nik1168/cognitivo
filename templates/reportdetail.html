@@ -1,0 +1,25 @@
+<!--
+  This template loads for the 'tab.friend-detail' state (app.js)
+  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
+  The FriendsCtrl pulls data from the Friends service (service.js)
+  The Friends service returns an array of friend data
+-->
+<ion-view view-title="{{report.created|date:'medium'}}" ng-init="findOne()">
+ <ion-nav-buttons side="right">
+      <a class="button" href="#" ng-click="delete()">
+        Eliminar
+      </a>
+    </ion-nav-buttons>
+  <ion-content class="padding">
+  <h2>Nivele de Gas</h2>
+  <p> El nivel de gas cambio fuera de lo comun {{report.gas}} veces</p>
+  <h2>Puerta Principal</h2>
+    <p>La puerta principal se abrio{{report.principal}} veces</p>
+    <h2>Pastillero</h2>
+      <p>El pastillero del paciente se abrio {{report.pastillero}}veces</p>          
+      <h2>Jornada</h2>
+      <p>El paciente se levanto de su cama</p>
+      <h2>Signos vitales</h2>
+        Los signos vitales del paciente salieron de lo comun en  {{report.vital}} ocasiones
+  </ion-content>
+</ion-view>
