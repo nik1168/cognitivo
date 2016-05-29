@@ -7,7 +7,7 @@
   <ion-content>
     <ion-list>
       <ion-item ng-repeat="pfeiffer in pfeiffers" href="#/app/pfeiffers/{{pfeiffer._id}}">
-     {{pfeiffer.created}} result {{pfeiffer.result}}  
+     {{pfeiffer.created|date:'medium'}} resultado:  {{diagnosticate(pfeiffer.result)}} 
       </ion-item>
     </ion-list>
   </ion-content>

@@ -302,6 +302,30 @@ weekday[6] = "Sabado";
       });
      }
    };
+   
+   $scope.diagnosticate = function (result) {
+     if(result <=2){
+       //console.log("Normal");
+      return "Normal";
+
+     }
+     if (result>2 && result<=4) {
+      // console.log("Leve");
+        return "Deterioro Cognitivo Leve";
+
+     }
+     if (result>4 && result<=7) {
+      // console.log("Moderado");
+        return "Deterioro Cognitivo Moderado";
+    }
+    if (result>7 && result<=10) {
+      // console.log("Grave");
+       return "Deterioro Cognitivo Grave";
+   }
+
+
+ };
+
 })
 .controller('FuerzaCtrl', function($scope){
     var client2 = new Messaging.Client("test.mosquitto.org", 8080, "myclientid_" + parseInt(Math.random() * 100, 10));

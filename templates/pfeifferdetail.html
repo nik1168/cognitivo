@@ -14,20 +14,30 @@
       </a>
     </ion-nav-buttons>
   <ion-content class="padding">
-  
-    
-    <p>
-            {{pfeiffer.date}}
-            {{pfeiffer.weekDay}}
-            {{pfeiffer.tnumber}}
-            {{pfeiffer.tnumber}}
-            {{pfeiffer.age}}
-            {{pfeiffer.birthdate}}
-            {{pfeiffer.currentPresident}}
-            {{pfeiffer.lastPresident}}
-            {{pfeiffer.motherLastName}}
-            {{pfeiffer.result}}
-
-    </p>
+    <h3>Resultados del test</h3>
+  <h3>Fecha de Hoy</h3>
+  <p data-ng-bind="pfeiffer.date"></p>
+  <h3>Dia de la semana</h3>
+  <p data-ng-bind="pfeiffer.weekDay"></p>
+  <h3>Numero de telefono</h3>
+  <p data-ng-bind="pfeiffer.tnumber"></p>
+  <h3>Edad</h3>
+  <p data-ng-bind="pfeiffer.age"></p>
+  <h3>Fecha de Nacimiento</h3>
+  <p data-ng-bind="pfeiffer.birthdate"></p>
+  <h3>Presidente Actual</h3>
+  <p data-ng-bind="pfeiffer.currentPresident"></p>
+  <h3>Ultimo Presidente</h3>
+  <p data-ng-bind="pfeiffer.lastPresident"></p>
+  <h3>Apellido de madre</h3>
+  <p data-ng-bind="pfeiffer.motherLastName"></p>
+  <h3>Resta</h3>
+  <p data-ng-bind="pfeiffer.substraction"></p>
+  <h3>Resultado</h3>
+  <p data-ng-bind="pfeiffer.result"></p>
+  <h3>Diagnostico</h3>
+  <p>{{diagnosticate(pfeiffer.result)}}</p>
+  <h3>Realizado</h3>
+  <p data-ng-bind="pfeiffer.created | date:'medium'"></p>
   </ion-content>
 </ion-view>
