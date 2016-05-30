@@ -2,7 +2,7 @@
   <ion-content>
     <ion-list>
       <ion-item ng-repeat="reporte in reports" href="#/app/reports/{{reporte._id}}">
-     {{reporte.created|date:'medium'}}   
+     {{reporte.created|date:'MMM d, y'}}   
 
       </ion-item>
     </ion-list>
