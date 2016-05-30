@@ -1,8 +1,8 @@
 <ion-view view-title="Reportes" ng-init="find()">
   <ion-content>
     <ion-list>
-      <ion-item ng-repeat="reporte in reports" href="#/app/reports/{{reporte._id}}">
-     {{reporte.created|date:'MMM d, y'}}   
+      <ion-item ng-repeat="reporte in reports | orderBy:'reporte.created':true" href="#/app/reports/{{reporte._id}}">
+     {{reporte.created|date:'medium'}}   
 
       </ion-item>
     </ion-list>

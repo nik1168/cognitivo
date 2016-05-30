@@ -336,12 +336,14 @@ weekday[6] = "Sabado";
             //alert("Connected");
              console.log("Conectado Fuerza");
              //$scope.estados.push({estado:"conectado"});
+             alert("Conectado al sensor de fuerza conectado en el colchon del paciente");
              client2.subscribe('/cognitive/casa/fuerza', {qos: 2});
         },
         //Gets Called if the connection could not be established
         onFailure: function (message) {
            //$scope.estados = "error de conexion";
            // alert("Connection failed: " + message.errorMessage);
+           $scope.connect();
         }
     };
     $scope.connect=function(){
@@ -373,12 +375,15 @@ weekday[6] = "Sabado";
             //alert("Connected");
              console.log("Conectado Vital");
              //$scope.estados.push({estado:"conectado"});
+               alert("Conectado al sensor de signos vitales");
              client2.subscribe('/cognitive/casa/vital', {qos: 2});
         },
         //Gets Called if the connection could not be established
         onFailure: function (message) {
            //$scope.estados = "error de conexion";
            // alert("Connection failed: " + message.errorMessage);
+           $scope.connect();
+
         }
     };
     $scope.connect=function(){
@@ -392,9 +397,7 @@ weekday[6] = "Sabado";
       //angular.element('#messages2').append('<span>Topic: ' + message.destinationName + '  | ' + message.payloadString + '</span><br/>');
       $('#messagesVital').append('<span>' + message.payloadString + '</span><br/>');
      // console.log(message.timestamp);
-    if(message.payloadString == 2){
-      alert("ALERTA!!!!!");
-    }
+    
      // $scope.mensajes.push({dato : message.payloadString});
     //  $scope.anadir();
   };
@@ -409,13 +412,16 @@ weekday[6] = "Sabado";
         onSuccess: function () {
             //alert("Connected");
              console.log("Conectado Principal");
+             alert("Conectado al sensor de movimiento implementado en la puerta principal del hogar del paciente");
              //$scope.estados.push({estado:"conectado"});
              client2.subscribe('/cognitive/casa/puerta', {qos: 2});
+
         },
         //Gets Called if the connection could not be established
         onFailure: function (message) {
            //$scope.estados = "error de conexion";
            // alert("Connection failed: " + message.errorMessage);
+             $scope.connect();
         }
     };
     $scope.connect=function(){
@@ -447,12 +453,14 @@ weekday[6] = "Sabado";
             //alert("Connected");
              console.log("Conectado Pastillero");
              //$scope.estados.push({estado:"conectado"});
+              alert("Conectado al sensor de movimiento implementado en el pastillero del paciente");
              client2.subscribe('/cognitive/casa/pastillero', {qos: 2});
         },
         //Gets Called if the connection could not be established
         onFailure: function (message) {
            //$scope.estados = "error de conexion";
            // alert("Connection failed: " + message.errorMessage);
+           $scope.connect();
         }
     };
     $scope.connect=function(){
@@ -484,12 +492,14 @@ weekday[6] = "Sabado";
             //alert("Connected");
              console.log("Conectado Gas");
              //$scope.estados.push({estado:"conectado"});
+                alert("Conectado al sensor de gas implementado en la cocina del paciente");
              client2.subscribe('/cognitive/casa/gas', {qos: 2});
         },
         //Gets Called if the connection could not be established
         onFailure: function (message) {
            //$scope.estados = "error de conexion";
            // alert("Connection failed: " + message.errorMessage);
+           $scope.connect();
         }
     };
     $scope.connect=function(){
