@@ -337,7 +337,7 @@ weekday[6] = "Sabado";
              console.log("Conectado Fuerza");
              //$scope.estados.push({estado:"conectado"});
              alert("Conectado al sensor de fuerza conectado en el colchon del paciente");
-             client2.subscribe('/cognitive/casa/fuerza', {qos: 2});
+             client2.subscribe('/cognitive/casa/fuerza/1', {qos: 2});
         },
         //Gets Called if the connection could not be established
         onFailure: function (message) {
@@ -425,7 +425,7 @@ weekday[6] = "Sabado";
              console.log("Conectado Principal");
              alert("Conectado al sensor de movimiento implementado en la puerta principal del hogar del paciente");
              //$scope.estados.push({estado:"conectado"});
-             client2.subscribe('/cognitive/casa/puerta', {qos: 2});
+             client2.subscribe('/cognitive/casa/puerta/1', {qos: 2});
 
         },
         //Gets Called if the connection could not be established
@@ -468,7 +468,7 @@ weekday[6] = "Sabado";
              console.log("Conectado Pastillero");
              //$scope.estados.push({estado:"conectado"});
               alert("Conectado al sensor de movimiento implementado en el pastillero del paciente");
-             client2.subscribe('/cognitive/casa/pastillero', {qos: 2});
+             client2.subscribe('/cognitive/casa/pastillero/1', {qos: 2});
         },
         //Gets Called if the connection could not be established
         onFailure: function (message) {
@@ -510,7 +510,7 @@ weekday[6] = "Sabado";
              console.log("Conectado Gas");
              //$scope.estados.push({estado:"conectado"});
                 alert("Conectado al sensor de gas implementado en la cocina del paciente");
-             client2.subscribe('/cognitive/casa/gas', {qos: 2});
+             client2.subscribe('/cognitive/casa/gas/1', {qos: 2});
         },
         //Gets Called if the connection could not be established
         onFailure: function (message) {
