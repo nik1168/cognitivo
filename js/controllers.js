@@ -357,9 +357,14 @@ weekday[6] = "Sabado";
       //angular.element('#messages2').append('<span>Topic: ' + message.destinationName + '  | ' + message.payloadString + '</span><br/>');
       $('#messagesFuerza').append('<span>' + message.payloadString + '</span><br/>');
      // console.log(message.timestamp);
-    if(message.payloadString == 2){
-      alert("ALERTA!!!!!");
-    }
+    if(message.payloadString<500){
+          $('#datosFuerza').html("La cama del paciente se encuentra vacia");
+          $('#datosFuerzaDos').html("");
+      }
+      if(message.payloadString>=500){
+          $('#datosFuerzaDos').html("El paciente se encuentra en su cama");
+            $('#datosFuerza').html("");
+      }
      // $scope.mensajes.push({dato : message.payloadString});
     //  $scope.anadir();
   };
@@ -395,6 +400,12 @@ weekday[6] = "Sabado";
   client2.onMessageArrived = function (message) {
       //Do something with the push message you received
       //angular.element('#messages2').append('<span>Topic: ' + message.destinationName + '  | ' + message.payloadString + '</span><br/>');
+     if(message.payloadString<250){
+          $('#datosVital').html("Signos vitales normales");
+      }
+      else{
+          $('#datosVital').html("Signos vitales fuera de lo normal");
+      }
       $('#messagesVital').append('<span>' + message.payloadString + '</span><br/>');
      // console.log(message.timestamp);
     
@@ -435,9 +446,12 @@ weekday[6] = "Sabado";
       //angular.element('#messages2').append('<span>Topic: ' + message.destinationName + '  | ' + message.payloadString + '</span><br/>');
       $('#messagesPuerta').append('<span>' + message.payloadString + '</span><br/>');
      // console.log(message.timestamp);
-    if(message.payloadString == 2){
-      alert("ALERTA!!!!!");
-    }
+     if(message.payloadString==1){
+          $('#datosPuerta').html("Puerta abierta");
+      }
+      else{
+          $('#datosPuerta').html("Puerta cerrada");
+      }
      // $scope.mensajes.push({dato : message.payloadString});
     //  $scope.anadir();
   };
@@ -474,9 +488,12 @@ weekday[6] = "Sabado";
       //angular.element('#messages2').append('<span>Topic: ' + message.destinationName + '  | ' + message.payloadString + '</span><br/>');
       $('#messagesPastillero').append('<span>' + message.payloadString + '</span><br/>');
      // console.log(message.timestamp);
-    if(message.payloadString == 2){
-      alert("ALERTA!!!!!");
-    }
+    if(message.payloadString==1){
+          $('#datosPastillero').html("Pastillero Abierto");
+      }
+      else{
+          $('#datosPastillero').html("Pastillero se encuentra cerrado");
+      }
      // $scope.mensajes.push({dato : message.payloadString});
     //  $scope.anadir();
   };
@@ -513,9 +530,12 @@ weekday[6] = "Sabado";
       //angular.element('#messages2').append('<span>Topic: ' + message.destinationName + '  | ' + message.payloadString + '</span><br/>');
       $('#messagesGas').append('<span>' + message.payloadString + '</span><br/>');
      // console.log(message.timestamp);
-    if(message.payloadString == 2){
-      alert("ALERTA!!!!!");
-    }
+    if(message.payloadString<300){
+          $('#datosGas').html("Ambiente de humo y gas normal");
+      }
+      else{
+          $('#datosGas').html("Fuga de gas");
+      }
      // $scope.mensajes.push({dato : message.payloadString});
     //  $scope.anadir();
   };

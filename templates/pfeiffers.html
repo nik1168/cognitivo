@@ -6,7 +6,7 @@
     </ion-nav-buttons>
   <ion-content>
     <ion-list>
-      <ion-item ng-repeat="pfeiffer in pfeiffers" href="#/app/pfeiffers/{{pfeiffer._id}}">
+      <ion-item ng-repeat="pfeiffer in pfeiffers | orderBy:'pfeiffer.created':true" href="#/app/pfeiffers/{{pfeiffer._id}}">
      {{pfeiffer.created|date:'MMM d, y'}} resultado:  {{diagnosticate(pfeiffer.result)}} 
       </ion-item>
     </ion-list>

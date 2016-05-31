@@ -4,7 +4,7 @@
   The FriendsCtrl pulls data from the Friends service (service.js)
   The Friends service returns an array of friend data
 -->
-<ion-view view-title="{{pfeiffer.created}}" ng-init="findOne()">
+<ion-view view-title="{{pfeiffer.created | date:'medium'}}" ng-init="findOne()">
 <ion-nav-buttons side="right">
       <a class="button" href="#/app/pfeiffers/{{pfeiffer._id}}/edit">
         Editar
