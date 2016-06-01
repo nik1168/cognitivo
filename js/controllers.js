@@ -500,6 +500,250 @@ weekday[6] = "Sabado";
 
   
 })
+.controller('MineraCtrl', function($scope,$http){
+    $scope.resultado = "No hay un resultado todavia, presione boton de ingresar";
+  var words = new Array(25);
+  words[0]=  "Tambor";
+  words[1]=  "Cortina";
+  words[2]=  "Campana";
+  words[3]=  "Cafe";
+  words[4]=  "Escuela";
+  words[5]=  "Padre";
+  words[6]=  "Luna";
+  words[7]=  "Jardin";
+  words[8]=  "Sombrero";
+  words[9]=  "Campesino";
+  words[10]=  "Nariz";
+  words[11]=  "Pavo";
+  words[12]=  "Color";
+  words[13]=  "Casa";
+  words[14]=  "Rio";
+  words[15]=  "Mesa";
+  words[16]=  "Cable";
+  words[17]=  "Auto";
+  words[18]=  "Zapato";
+  words[19]=  "Silla";
+  words[20]=  "Carretera";
+  words[21]=  "Camion";
+  words[22]=  "Cocina";
+  words[23]=  "Carton";
+  words[24]=  "Caballo";
+  words[25]=  "Guitarra";
+  words[26]=  "Peluche";
+  words[27]=  "Celular";
+  words[28]=  "Escritorio";
+  words[29]=  "Cinturon";
+  words[30]=  "Cinta";
+  words[31]=  "Oro";
+  words[32]=  "Cobre";
+  words[32]=  "Tonalidad";
+   var marca=  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+   var valores=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+   console.log(valores.length);
+  // Math.floor(Math.random() * (max - min + 1)) + min;)
+   for (var i = 0; i < valores.length;) {
+     var g = Math.floor((Math.random() * 32) + 0 );
+     if(marca[g]==0){
+       valores[i]=g;
+        marca[g]=1;
+        i++;
+     }
+    // valores[i]
+   }
+   for (var i = 0; i < valores.length; i++) {
+     console.log(valores[i]);
+   }
+    $scope.words = [
+      {
+        word : words[valores[0]]
+      },
+      {
+        word : words[valores[1]]
+      },
+      {
+        word : words[valores[2]]
+      },
+      {
+        word : words[valores[3]]
+      },
+      {
+        word : words[valores[4]]
+      },
+      {
+        word : words[valores[5]]
+      },
+      {
+        word: words[valores[6]]
+      },
+      {
+        word:words[valores[7]]
+      },
+      {
+        word : words[valores[8]]
+      },
+      {
+        word : words[valores[9]]
+      },
+      {
+        word : words[valores[10]]
+      },
+      {
+        word: words[valores[11]]
+      },
+      {
+        word: words[valores[12]]
+      },
+      {
+        word : words[valores[13]]
+      },
+      {
+        word : words[valores[14]]
+      },
+      {
+        word : words[valores[15]]
+      }
+
+];
+
+$scope.firstRow = [
+  {
+  digit : Math.floor((Math.random() * 10) + 1)
+},
+{
+  digit : Math.floor((Math.random() * 10) + 1)
+}
+];
+
+$scope.secondRow = [
+  {
+  digit : Math.floor((Math.random() * 10) + 1)
+},
+{
+  digit : Math.floor((Math.random() * 10) + 1)
+},
+{
+  digit : Math.floor((Math.random() * 10) + 1)
+}
+];
+
+$scope.thirdRow = [
+  {
+  digit : Math.floor((Math.random() * 10) + 1)
+},
+{
+  digit : Math.floor((Math.random() * 10) + 1)
+},
+{
+  digit : Math.floor((Math.random() * 10) + 1)
+},
+{
+  digit : Math.floor((Math.random() * 10) + 1)
+}
+];
+
+$scope.fourthRow = [
+  {
+  digit : Math.floor((Math.random() * 10) + 1)
+},
+{
+  digit : Math.floor((Math.random() * 10) + 1)
+},
+{
+  digit : Math.floor((Math.random() * 10) + 1)
+},
+{
+  digit : Math.floor((Math.random() * 10) + 1)
+},
+{
+  digit : Math.floor((Math.random() * 10) + 1)
+}
+];
+
+$scope.fifthRow = [
+  {
+  digit : Math.floor((Math.random() * 10) + 1)
+},
+{
+  digit : Math.floor((Math.random() * 10) + 1)
+},
+{
+  digit : Math.floor((Math.random() * 10) + 1)
+},
+{
+  digit : Math.floor((Math.random() * 10) + 1)
+},
+{
+  digit : Math.floor((Math.random() * 10) + 1)
+},
+{
+  digit : Math.floor((Math.random() * 10) + 1)
+}
+];
+
+$scope.sixthRow = [
+  {
+  digit : Math.floor((Math.random() * 10) + 1)
+},
+{
+  digit : Math.floor((Math.random() * 10) + 1)
+},
+{
+  digit : Math.floor((Math.random() * 10) + 1)
+},
+{
+  digit : Math.floor((Math.random() * 10) + 1)
+},
+{
+  digit : Math.floor((Math.random() * 10) + 1)
+},
+{
+  digit : Math.floor((Math.random() * 10) + 1)
+},
+{
+  digit : Math.floor((Math.random() * 10) + 1)
+}
+];
+
+ $scope.datamining = function () {
+   var im = "normal";
+     var vwm = "normal";
+     var viwm = "normal";
+     var wvm = "normal";
+     if(this.immediateMemory < 6){
+       im = "defectuoso";
+     }
+     if(this.verbalWorkingMemory <4){
+       vwm = "defectuoso";
+     }
+     if(this.visualWorkingMemory < 4){
+       viwm = "defectuoso";
+     }
+     if(this.weschlerVisualMemory >= 4){
+       wvm = "defectuoso";
+     }
+
+   $http({
+      url: 'http://cognitive-sisinfo.rhcloud.com/datamining',
+      method: "POST",
+      data: {
+        'immediateMemory' : im,
+        'verbalWorkingMemory' : vwm,
+        'visualWorkingMemory' : viwm,
+        'weschlerVisualMemory' : wvm
+      }
+  })
+  .then(function(response) {
+          console.log(response.data);
+          $scope.resultado = response.data;
+  },
+  function(response) { // optional
+          console.log("fallo:"+response);
+  });
+
+  };
+
+  
+})
 .controller('GasCtrl', function($scope){
     var client2 = new Messaging.Client("test.mosquitto.org", 8080, "myclientid_" + parseInt(Math.random() * 100, 10));
     var options = {
@@ -545,4 +789,23 @@ weekday[6] = "Sabado";
 
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {
+});
+angular.module('starter.controllers').directive('convertToNumber', function() {
+  return {
+    require: 'ngModel',
+    link: function(scope, element, attrs, ngModel) {
+      ngModel.$parsers.push(function(val) {
+        return parseInt(val, 10);
+      });
+      ngModel.$formatters.push(function(val) {
+        return '' + val;
+      });
+    }
+  };
+});
+angular.module('starter.controllers').filter('num', function() {
+return function(input){
+  return parseInt(input,10);
+
+}
 });

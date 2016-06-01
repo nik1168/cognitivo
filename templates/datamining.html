@@ -1,0 +1,126 @@
+<ion-view view-title="Mineria de datos">
+  <ion-content>
+<form data-ng-submit="datamining()">
+    <div>
+  <label for="date">Memoria inmediata</label>
+  <br>
+  <label for="date">Instrucciones</label>
+  <p>
+    “A continuación voy a leerle una lista de palabras, debe
+escuchar atentamente para que cuando yo termine me diga todas aquellas que
+recuerde, y no es necesario que las repita en el mismo orden”.
+  </p>
+<label for="date">Puntuacion</label>
+<p>
+  “El rendimiento normal se encuentra a partir de 6 puntos”. No
+obstante, hay que tener cuidado en esta interpretación ya que algunos
+pacientes pueden ponerse nerviosos y obtener un rendimiento ligeramente
+inferior.
+</p>
+<div class="words" ng-repeat="word in words | limitTo:15">
+  {{word.word}}
+</div>
+<br>
+ <div>
+    <input type="number" ng-model="immediateMemory" id="memoriaInmediata" class="form-control" placeholder="Puntuacion" min="0" max="15" required>
+  </div>
+    </div>
+    <br>
+    <div>
+
+    <label for="date">Memoria de trabajo</label>
+    <br>
+      <label for="date">Instrucciones</label>
+    <p>
+      “Voy a decirle algunos números. Escuche con atención y cuando termine usted los repetirá al revés”. Al igual que ocurre en
+      dígitos en orden directo los números se presentan en un tono de voz normal, a una velocidad de uno por segundo."
+    </p>
+    <label for="date">Puntuacion</label>
+    <p>
+      "Un paciente con un nivel intelectual de tipo medio puede repetir
+      sin dificultad de a partir de 4 dígitos (1 menos que en orden directo). La
+      repetición de menos de 4 dígitos por parte de un paciente sin deficiencia
+      mental ni afasia, indica una memoria de trabajo verbal defectuosa."
+    </p>
+    {{firstRow[0].digit}} {{firstRow[1].digit}}<br>
+    {{secondRow[0].digit}} {{secondRow[1].digit}} {{secondRow[2].digit}}<br>
+    {{thirdRow[0].digit}} {{thirdRow[1].digit}} {{thirdRow[2].digit}} {{thirdRow[3].digit}}<br>
+    {{fourthRow[0].digit}} {{fourthRow[1].digit}} {{fourthRow[2].digit}} {{fourthRow[3].digit}} {{fourthRow[4].digit}}<br>
+    {{fifthRow[0].digit}} {{fifthRow[1].digit}} {{fifthRow[2].digit}} {{fifthRow[3].digit}} {{fifthRow[4].digit}} {{fifthRow[5].digit}}<br>
+    {{sixthRow[0].digit}} {{sixthRow[1].digit}} {{sixthRow[2].digit}} {{sixthRow[3].digit}} {{sixthRow[4].digit}} {{sixthRow[5].digit}} {{sixthRow[6].digit}}<br>
+    <br>
+    <div>
+    <input type="number" ng-model="verbalWorkingMemory" id="memoriaDeTrabajo" class="form-control" placeholder="Puntuacion" min="0" max="6" required>
+    </div>
+    </div>
+    <br>
+    <div>
+    <label for="date">Memoria visoespacial</label>
+    <br>
+    <label for="date">Instrucciones</label>
+    <p>
+      “A continuación voy a tocar unos cuantos cubos en un orden determinado, debe de fijarse atentamente para que cuando yo termine los toque al revés de cómo yo los he tocado”. Se le hace una demostración con 2 o 3 bloques al paciente.
+    </p>
+    <label for="date">Puntuacion</label>
+    <p>
+      "Se considera normal una puntuación de 3-4. Una puntuación inferior a 3 es indicativa de alteración. Los pacientes con defectos en el campo
+      visual tienen una memoria de trabajo visoespacial inferior al grupo normativo."
+    </p>
+    <img ng-src="img/memory.JPG" class="img-responsive" />
+    <div>
+    <input type="number" ng-model="visualWorkingMemory" id="memoriaDeTrabajo" class="form-control" placeholder="Puntuacion" min="0" max="4" required>
+    </div>
+    </div>
+    <br>
+    <div>
+    <label for="date">Memoria visual</label>
+    <br>
+    <label for="date">Instrucciones</label>
+    <p>
+      “Voy a mostrarle unas tarjetas en las que se encuentran unos
+      dibujos. Se las presentaré durante 15 segundos y, transcurrido ese tiempo se
+      las retiraré y usted deberá dibujarla (en un papel en blanco) lo más
+      correctamente que pueda”.
+    </p>
+    <label for="date">Puntuacion</label>
+    <p>
+      "Cada diseño se puntúa en una escala de 4 puntos, con valores
+      que van de 0 a 3. Cuanto mayor sea la puntuación más adecuada es la
+      reproducción. El siguiente esquema de puntuación puede utilizarse para la
+      cuantificación del rendimiento en esta prueba. Se considera normal una
+      puntuación de 2 o más en cada diseño. Estas puntuaciones directas se
+      expresan en puntuaciones típicas (P.T), siendo la puntuación típica media de 7
+      o superior. Para el caso de la reproducción demorada se aplican los mismos
+      criterios de puntuación.
+      1. Pobre (0): Fallo en recordar y reproducir el diseño.
+      2. Regular (1): Diseños reconocibles pero distorsionados, rotados,
+      parcialmente omitidos o confabulados.
+      3. Bien (2): Diseños fácilmente reconocibles con errores menores de
+      integración, omisión o adición.
+      4. Excelente (3): Reproducción casi perfectas de los ítems con todos sus
+      componentes, emplazamiento e integración."
+    </p>
+    <img ng-src="img/wes.JPG" class="img-responsive" />
+    <div>
+    <input type="number" ng-model="weschlerVisualMemory" id="memoriaDeTrabajo" class="form-control" placeholder="Puntuacion" required>
+    </div>
+    </div>
+    <br>
+    <div>
+    <label for="lastName">Resultado</label>
+    <p>
+    Resultado:  {{resultado}}
+    </p>
+  </div>
+
+        <br>
+             <div>
+          <input type="submit" class="btn btn-success" value="Ingresar">
+        </div>
+        <div data-ng-bind="error">
+          <strong data-ng-bind="error"></strong>
+        </div>
+
+  </form>
+  </ion-content>
+</ion-view>

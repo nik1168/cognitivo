@@ -80,6 +80,15 @@ angular.module('cognitivo', ['ionic','ngResource','starter.controllers','cogniti
       }
     }
   })
+     .state('app.mineria', {
+    url: '/mineria',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/datamining.html',
+        controller: 'MineraCtrl'
+      }
+    }
+  })
      .state('app.gas', {
     url: '/gas',
     views: {
